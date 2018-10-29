@@ -1,0 +1,41 @@
+Game Plan for a Game
+(Feel free to add bullets)
+
+* Brief description of game
+	o Title
+	o Overview of Rules
+	o Overview of Theme
+* Style
+	o Rules of the game
+		* How to win
+		* How to lose
+		* Point system?
+		* Lives?
+		* Life meter?
+		* Bonuses?
+	o What does the player control?
+		* Assign buttons to which object?
+	o How does the player control the game
+		* Button assignments
+	o Levels
+		* Level 1:
+			* New Challenges
+			* New Designs
+			* Themes
+	o Models
+		* Animations?
+	o Textures
+	o Fonts
+	o Sounds
+	o Layout
+		* (Basic design concepts here)
+* Menus
+	o Start Game
+	o Settings
+		* Volume
+			* Music
+			* SFX
+		* Key assignments
+			* Default
+			* Custom
+
