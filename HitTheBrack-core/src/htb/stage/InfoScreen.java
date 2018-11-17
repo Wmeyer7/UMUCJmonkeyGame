@@ -33,9 +33,16 @@ public class InfoScreen extends GameScreen {
 			
 	}
 	
+	@Override
+	public void dispose() {
+		super.dispose();
+		Assets.buttonPressedSound.dispose();
+	}
+	
 	public void update(float dt){
 		
 		if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
+			Assets.buttonPressedSound.play(0.1f);
 			game.getScreen().pause();
 			game.setScreen(game.lastScreen);
 			game.lastScreen = game.infoScreen;
