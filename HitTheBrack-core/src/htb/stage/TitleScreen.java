@@ -41,9 +41,21 @@ public class TitleScreen extends GameScreen {
 		background = new MyActor();
 		background.setTexture(titleScreenFirst);
 		background.setBounds(0, 0, mainStage.getWidth(), mainStage.getHeight());
+		Assets.startScreenBGMusic.setLooping(true);
+		Assets.startScreenBGMusic.setVolume(0.1f);
+		Assets.startScreenBGMusic.play();
+		Assets.backgroundMusic.setLooping(true);
+		Assets.backgroundMusic.setVolume(0.1f);
 		
 		mainStage.addActor(background);
 		
+	}
+	
+	@Override
+	public void dispose() {
+		super.dispose();
+		Assets.startScreenBGMusic.dispose();
+		Assets.buttonPressedSound.dispose();
 	}
 	
 	public void update(float dt){
@@ -65,13 +77,17 @@ public class TitleScreen extends GameScreen {
 		
 		
 		if (Gdx.input.isKeyJustPressed(Keys.ENTER)){
+			Assets.buttonPressedSound.play(0.1f);
 			game.getScreen().pause();
 			game.setScreen(game.playScreen);
 			game.lastScreen = game.titleScreen;
+			Assets.startScreenBGMusic.stop();
+			Assets.backgroundMusic.play();
 		
 		}
 		
 		else if (Gdx.input.isKeyJustPressed(Keys.I)){
+			Assets.buttonPressedSound.play(0.1f);
 			game.getScreen().pause();
 			game.setScreen(game.infoScreen);
 			game.lastScreen = game.titleScreen;
