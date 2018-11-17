@@ -91,6 +91,16 @@ public class PlayScreen extends GameScreen {
 		
 	}
 	
+	@Override
+	public void dispose() {
+		super.dispose();
+		Assets.backgroundMusic.dispose();
+		Assets.bulletFired.dispose();
+		Assets.bulletHitsStrongBrick.dispose();
+		Assets.bulletHitsWeakBrick.dispose();
+		Assets.buttonPressedSound.dispose();
+	}
+	
 	public void addspiders(){
 		float width = uiStage.getWidth();
 		float height = uiStage.getHeight();
@@ -185,6 +195,7 @@ public class PlayScreen extends GameScreen {
 					bullet.remove();
 					boolean success = spider.collisionWithBullet();
 					if (success){
+						Assets.bulletHitsWeakBrick.play();
 						delayer.reset(3);
 						stopwatch.reset(6);
 						stopwatch.running = false;
@@ -193,10 +204,13 @@ public class PlayScreen extends GameScreen {
 						spiderToBeRemoved.add(spider);
 					}
 					else{
+						Assets.bulletHitsStrongBrick.play();
 						player.lives -= 1;
 						if (player.lives == 0){
 							pause();
 							game.setScreen(game.gameoverScreen);
+							Assets.backgroundMusic.stop();
+							Assets.startScreenBGMusic.play();
 						}
 					}
 					
@@ -212,6 +226,7 @@ public class PlayScreen extends GameScreen {
 	
 	public void handleKeys(){
 		if (Gdx.input.isKeyJustPressed(Keys.P)){
+			Assets.buttonPressedSound.play(0.1f);
 			paused = !paused;
 			game.playScreen.pause();
 			game.lastScreen = game.playScreen;
@@ -236,12 +251,14 @@ public class PlayScreen extends GameScreen {
 		
 		if (Gdx.input.isKeyJustPressed(Keys.SPACE)){
 			//Bullet is fired!
+			Assets.bulletFired.play();
 			Bullet bullet = player.fireBullet();
 			bulletList.add(bullet);
 			uiStage.addActor(bullet);
 		}
 
 		if (Gdx.input.isKeyJustPressed(Keys.I)){
+			Assets.buttonPressedSound.play(0.1f);
 			game.getScreen().pause();
 			game.setScreen(game.infoScreen);
 			game.lastScreen = game.playScreen;
@@ -249,6 +266,7 @@ public class PlayScreen extends GameScreen {
 		
 
 		if (Gdx.input.isKeyJustPressed(Keys.Q)){
+			Assets.buttonPressedSound.play(0.1f);
 			game.getScreen().pause();
 			game.restart();
 			
