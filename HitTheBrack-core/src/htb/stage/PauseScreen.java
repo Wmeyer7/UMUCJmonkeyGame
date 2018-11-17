@@ -39,6 +39,12 @@ public class PauseScreen extends GameScreen {
 			
 	}
 	
+	@Override
+	public void dispose() {
+		super.dispose();
+		Assets.buttonPressedSound.dispose();
+	}
+	
 	public void update(float dt){
 		
 		if (time > animationTime){
@@ -58,6 +64,7 @@ public class PauseScreen extends GameScreen {
 		
 		
 		if (Gdx.input.isKeyJustPressed(Keys.P)){
+			Assets.buttonPressedSound.play(0.1f);
 			game.getScreen().pause();
 			game.setScreen(game.playScreen);
 			game.lastScreen = game.pauseScreen;
@@ -65,6 +72,7 @@ public class PauseScreen extends GameScreen {
 		}
 		
 		if (Gdx.input.isKeyJustPressed(Keys.I)){
+			Assets.buttonPressedSound.play(0.1f);
 			game.getScreen().pause();
 			game.setScreen(game.infoScreen);
 			game.lastScreen = game.pauseScreen;
