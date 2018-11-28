@@ -19,6 +19,7 @@ public class Assets {
 	public static Music startScreenBGMusic; 		//To be looped on the start screen.
 	public static Sound buttonPressedSound;         //To be played when a button is pressed for Pause, Resume, Info... etc
 	public static Music backgroundMusic;			//To be played while game is being played.
+	public static Music winMusic;					//To be played when the game is won
 	public static Sound bulletFired;				//To be played when a bullet is fired.
 	public static Sound bulletHitsWeakBrick;	    //To be played when a weak brick hit and player gains score!!
 	public static Sound bulletHitsStrongBrick;		//To be played when a strong brick is hit, and player loses score.
@@ -60,6 +61,7 @@ public class Assets {
 		//Initialize Music
 		startScreenBGMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/music/MusicPlaceholder2.mp3"));
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/music/MusicPlaceholder3.mp3"));
+		winMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/music/CrowdCheer.mp3"));
 		
 		//Initialize SFX
 		buttonPressedSound = Gdx.audio.newSound(Gdx.files.internal("sounds/sfx/BlockDeathPH.wav"));
