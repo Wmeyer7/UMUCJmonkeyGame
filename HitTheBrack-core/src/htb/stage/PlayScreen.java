@@ -222,6 +222,13 @@ public class PlayScreen extends GameScreen {
 		}
 		bulletList.removeAll(bulletToBeRemoved);
 		spiderList.removeAll(spiderToBeRemoved);
+		
+		if ((spiderList.size() == 0)) {
+			pause();
+			game.setScreen(game.winScreen);
+			Assets.backgroundMusic.stop();
+			Assets.winMusic.play();
+		}
 	}
 	
 	public void handleKeys(){
