@@ -17,6 +17,7 @@ public class KillTheSpider extends Game {
 	public GameScreen playScreen;
 	public GameScreen pauseScreen;
 	public GameScreen gameoverScreen;
+	public GameScreen winScreen;
 	public GameScreen lastScreen; //It stores the last screen that game had. Useful to switch back to last state on exiting a state.
 	
 	public void create () {
@@ -26,6 +27,7 @@ public class KillTheSpider extends Game {
 		playScreen = new PlayScreen(this);
 		pauseScreen = new PauseScreen(this);
 		gameoverScreen = new GameoverScreen(this);
+		winScreen = new WinScreen(this);
 		setScreen(titleScreen);	
 		lastScreen = titleScreen;
 	}
