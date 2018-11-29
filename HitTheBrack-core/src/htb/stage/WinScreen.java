@@ -37,6 +37,7 @@ public class WinScreen extends GameScreen {
 		
 		if (Gdx.input.isKeyJustPressed(Keys.ANY_KEY)){
 			Assets.winMusic.stop();
+			Assets.startScreenBGMusic.play();
 			game.getScreen().pause();
 			game.restart();
 		}
