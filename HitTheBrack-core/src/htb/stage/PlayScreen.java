@@ -163,6 +163,24 @@ public class PlayScreen extends GameScreen {
 		
 	}
 	
+	public void addSpiders3() {
+		int[] yCoords = {400, 370, 330, 290, 400, 370, 330, 290, 700, 680, 660, 640, 700, 680, 660, 640, 850, 950, 1050, 950, 1050, 300, 200, 200};
+		int[] xCoords = {570, 670, 770, 870, 320, 220, 120, 20, 320, 220, 120, 20, 570, 670, 770, 870, 440, 370, 310, 510, 570, 440, 370, 510};
+		
+		float width = uiStage.getWidth();
+		float height = uiStage.getHeight();
+		
+		float spiderWidth = width/12;
+		float spiderHeight = height*0.8f/12;
+		
+		for (int i=0; i<24; i++) {
+			Spider spider = new Spider(xCoords[i], yCoords[i], spiderWidth, spiderHeight);
+			uiStage.addActor(spider);
+			spiderList.add(spider);
+		}
+		
+	}
+	
 	public void update(float dt){
 		//Handle the key inputs
 		handleKeys();
@@ -243,14 +261,18 @@ public class PlayScreen extends GameScreen {
 		bulletList.removeAll(bulletToBeRemoved);
 		spiderList.removeAll(spiderToBeRemoved);
 		
-		if ((spiderList.size() == 0) && (currentLevel == 2)) {
+		if ((spiderList.size() == 0) && (currentLevel == 3)) {
 			pause();
 			game.setScreen(game.winScreen);
 			Assets.backgroundMusic.stop();
 			Assets.winMusic.play();
 		} else if (spiderList.size() == 0) {
 			currentLevel++;
-			addSpiders2();
+			if (currentLevel == 2) {
+				addSpiders2();
+			} else if (currentLevel == 3) {
+				addSpiders3();
+			}
 		}
 	}
 	
