@@ -104,43 +104,25 @@ public class PlayScreen extends GameScreen {
 	}
 	
 	public void addspiders(){
+		
+		System.out.println("Width is " + uiStage.getWidth() + " and the height is " + uiStage.getHeight());
+		
+		int[] yCoords = {1100, 1100, 1100, 1100, 1100, 1100, 1100, 1100, 160, 160, 160, 160, 160, 160, 160, 160, 
+				250, 350, 450, 550, 650, 750, 850, 950, 250, 350, 450, 550, 650, 750, 850, 950,};
+		int[] xCoords = {120, 210, 300, 390, 480, 570, 660, 750, 120, 210, 300, 390, 480, 570, 660, 750, 
+				20, 20, 20, 20, 20, 20, 20, 20, 840, 840, 840, 840, 840, 840, 840, 840};
+		
 		float width = uiStage.getWidth();
 		float height = uiStage.getHeight();
 		
-		float spacingX = 20;
-		float spacingY = 20;
+		float spiderWidth = width/10;
+		float spiderHeight = height*0.8f/10;
 		
-		float spiderWidth = width /numspidersX - spacingX;
-		float spiderHeight = height*0.8f/numspidersY - spacingY;
-	
-		float upperOffset = uiStage.getHeight()*0.07f;
-		float lowerOffset =  uiStage.getHeight()*0.12f;
-	
-		//Create the upper horizontal line of spiders
-		for (int i=0; i<numspidersX; i++){
-			Spider spider = new Spider(i*(spiderWidth + spacingX),height - spiderHeight - upperOffset, spiderWidth, spiderHeight);
+		for (int i=0; i<32; i++) {
+			Spider spider = new Spider(xCoords[i], yCoords[i], spiderWidth, spiderHeight);
 			uiStage.addActor(spider);
 			spiderList.add(spider);
 		}
-		//Create the lower horizontal line of spiders
-		for (int i=0; i<numspidersX; i++){
-			Spider spider = new Spider(i*(spiderWidth + spacingX), lowerOffset, spiderWidth, spiderHeight);
-			uiStage.addActor(spider);
-			spiderList.add(spider);
-		}
-		
-		//Create the left vertical line of spiders
-		for (int i=0; i<numspidersY-2; i++){
-			Spider spider = new Spider(spacingX,(i+1)*(spiderHeight+ spacingY) +lowerOffset, spiderWidth, spiderHeight);
-			uiStage.addActor(spider);
-			spiderList.add(spider);
-		}
-		//Create the right vertical line of spiders
-				for (int i=0; i<numspidersY-2; i++){
-					Spider spider = new Spider(width-spiderWidth+ spacingX,(i+1)*(spiderHeight+ spacingY) +lowerOffset, spiderWidth, spiderHeight);
-					uiStage.addActor(spider);
-					spiderList.add(spider);
-				}
 		
 	}
 	
