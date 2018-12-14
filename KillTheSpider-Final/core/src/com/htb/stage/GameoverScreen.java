@@ -34,6 +34,7 @@ public class GameoverScreen extends GameScreen {
 	}
 	
 	public void update(float dt){
+		Assets.tickTock.stop();
 		Assets.backgroundMusic.stop();
 		Assets.levelTwoMusic.stop();
 		Assets.levelThreeMusic.stop();
