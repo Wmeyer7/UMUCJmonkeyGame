@@ -309,6 +309,7 @@ public class PlayScreen extends GameScreen {
 							Assets.playerDeath.play();
 							pause();
 							game.setScreen(game.gameoverScreen);
+							Assets.tickTock.stop();
 							Assets.backgroundMusic.stop();
 							Assets.levelTwoMusic.stop();
 							Assets.levelThreeMusic.stop();
